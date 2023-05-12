@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import os
 import subprocess
+import re
 
 sg.theme('BluePurple')
 layout = [[sg.Text('YouTube Downloader')],
@@ -22,6 +23,8 @@ while True:
         if "watch" or "playlist" in purl:
             os.chdir(path)
             os.system(cmd)
+            for filename in os.listdir(path):
+                re.sub("[\(\[].*?[\)\]]", "", x)
             sg.popup('Done!')
         else:
             sg.popup('Link Not Compatable')
